@@ -3,7 +3,7 @@ APP_ENV=local
 APP_KEY=base64:CBfIm0vmZ76v8UGCjFwjVXEFxefyXtjJecUTTsiV7ug=
 APP_DEBUG=true
 APP_LOG_LEVEL=debug
-APP_URL=http://glob.dev
+APP_URL=https://globcoast.net
 
 DB_CONNECTION=mysql
 DB_HOST=db717984889.db.1and1.com
