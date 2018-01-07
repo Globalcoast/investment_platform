@@ -9,6 +9,7 @@ use App\Downline;
 use App\Profit;
 use App\Request;
 use App\Config;
+use App\Testimony;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -60,6 +61,13 @@ class RequestController extends Controller
     	//update profit model
     	Profit::where('id', $profit_id)->update(['has_requested'=>1]);
         Capital::where('id',$Profit->capital->id)->update(['amount'=>$Profit->capital->amount+0]);
+        $prn=Capital::where('id',$Profit->capital->id)->first()->prn;
+        Capital::where('id',$Profit->capital->id)->update(['prn'=>$prn+1);
+
+
+
+
+
     	//populate transaction model
 
     	$transaction=new Transaction;
@@ -115,6 +123,8 @@ class RequestController extends Controller
     	//update profit model
     	Profit::where('id', $Profit->id)->update(['has_requested'=>1]);
         Capital::where('id',$Profit->capital->id)->update(['amount'=>$Profit->capital->amount+0]);
+        $prn=Capital::where('id',$Profit->capital->id)->first()->prn;
+        Capital::where('id',$Profit->capital->id)->update(['prn'=>$prn+1);
     	//populate transaction model
 
     	$transaction=new Transaction;
@@ -204,7 +214,7 @@ class RequestController extends Controller
 
     	if($Bonus->has_requested >0){
 
-    		return Redirect::to('/downline')->with('notification',"Bonus already requested ");
+    		return Redirect::back()->with('notification',"Bonus already requested ");
     	}
 
     	//populate request model
@@ -234,6 +244,47 @@ class RequestController extends Controller
         		$transaction->save();
 
         		return Redirect::to('/transaction')->with('notification',"Bonus successfully requested.");
+
+
+    }
+
+
+
+     public function requestTestimonyBonus($bonus_id){
+        $Bonus=Testimony::where([['id',$bonus_id],['has_approved',1]])->first();
+
+        if($Bonus->has_requested >0){
+
+            return Redirect::back()->with('notification',"Bonus already requested ");
+        }
+
+        //populate request model
+
+            $request= new Request;
+
+            $request->request_type=3; //for profit 1 for capital while 3 for referral bonus;
+
+            $request->bonus_id=$bonus_id;
+
+            $request->user_id=Auth::user()->id;
+
+            $request->has_paid=0;
+
+            $request->save();
+
+            //update profit model
+            Testimony::where([['id',$bonus_id],['has_approved',1]])->update(['has_requested'=>1]);
+            //populate transaction model
+
+            $transaction=new Transaction;
+
+                $transaction->user_id=Auth::user()->id;
+
+                $transaction->message="You requested testimonial bonus of $ ".$Bonus->amount;
+
+                $transaction->save();
+
+                return Redirect::to('/transaction')->with('notification',"Bonus successfully requested.");
 
 
     }

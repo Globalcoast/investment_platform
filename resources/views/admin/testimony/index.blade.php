@@ -75,6 +75,21 @@
            
 
         </p>
+
+        <p>
+
+          @if($Testimony->has_approved==1)
+
+           <label  class="label label-info label-xs" style="text-transform: capitalize;">Approved</label>
+          @else
+
+
+
+          <a class="btn btn-sm btn-primary" href="{{URL::to('admin/testimony/approve/'.$Testimony->id)}}">Approve</a>
+          @endif
+
+
+        </p>
       </div>
     </div>
                                     </div>

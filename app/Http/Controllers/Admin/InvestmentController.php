@@ -45,6 +45,30 @@ class InvestmentController extends Controller
 
     	Capital::where('id', $capital_id)->update(['has_confirmed_payment'=>1]);
 
+         //allocate one-time referral bonus ro referral
+            $Capital=Capital::where('id', $capital_id)->first();
+
+            $Investor=$Capital->user;
+           
+            $referee_investment_count=Capital::where('user_id', $Investor->id)->get()->count();
+
+            if($referee_investment_count ==1){
+                //allocated bonus
+                $bonus=(5/100)*$Capital->amount;
+
+                $referral=Downline::where('referee_id',$Investor->id)->first();
+
+                if(isset($referral->referral_id)){
+
+                Downline::where([['referral_id', $referral->referral_id], ['referee_id', $Investor->id]])->update(['amount'=>$bonus]);
+
+                }
+
+
+            }
+
+            //end of refferal binus allocation
+
 
     	return redirect::back()->with('notification','Investment Confirmed');
 

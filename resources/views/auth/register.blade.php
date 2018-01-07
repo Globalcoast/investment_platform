@@ -13,17 +13,27 @@
         <!-- content -->
         <div class="section-content anim">
           <div class="row">
+
+            <div class="container">
+               <h2 class="display-4 display-title home-title bordered anim-1">Globalcoast</h2>
+
+            </div>
+
+           
+            
+          </div>
+          <div class="row">
             <div class="col-12 col-md-6 text-left">
               <!-- title and description -->
               <div class="title-desc">
-                <h2 class="display-4 display-title home-title bordered anim-1">Globalcoast</h2>
+                
                 <h4 class="anim-2">Smart investment platform that returns daily ROI ranging from 3%-5% on invested capital</h4>
               </div>
 
               <!-- Action button -->
               <div class="btns-action anim-3">
-                <a class="btn btn-outline-white btn-round" href="#about">
-                  Get started
+                <a class="btn btn-outline-white btn-round" href="{{ route('register')}}#registers">
+                  Register
                 </a>
 
                 <a class="btn btn-outline-white btn-round" href="#calculator">
@@ -34,11 +44,19 @@
 
             <!-- begin of right content -->
             <div class="col-12 col-md-6 right-content hidden-sm center-vh">
-              <!-- content -->
+
+
+
+<video poster="/path/to/poster.jpg" autoplay controls style="width:100%;" data-plyr='{ "autoplay": "true"}'>
+  <source src="{{asset('vid/vid_ad1.mp4')}}" type="video/mp4">
+  <!-- Captions are optional -->
+  
+</video>
+
+              <!--
               <div class="section-content">
-                <!-- illustartion -->
-                  <iframe style="width:120%; height: 450px;" src="{{asset('vid/vid_ad1.mp4')}}" frameborder="0" allowfullscreen></iframe>
-              </div>
+                  <iframe  src="{{asset('vid/vid_ad1.mp4')}}" frameborder="0" allowfullscreen></iframe>
+              </div>-->
             </div>
             <!-- end of right content -->
           </div>
@@ -49,7 +67,7 @@
         <footer class="section-footer scrolldown">
           <a class="down">
             <span class="icon"></span>
-            <span class="txt">Scroll Down</span>
+          
           </a>
         </footer>
       </div>
@@ -86,7 +104,7 @@
         <footer class="section-footer scrolldown">
           <a class="down">
             <span class="icon"></span>
-            <span class="txt">Walk Through Globalcoast</span>
+          
           </a>
         </footer>
       </div>
@@ -101,7 +119,7 @@
 
 <!---video section-->
 
-<div class="section section-description fp-auto-height-responsive " data-section="about">
+<div class="section section-description fp-auto-height-responsive " data-section="video">
       <!-- Begin of section wrapper -->
       <div class="section-wrapper center-vh dir-col anim">
         <!-- title -->
@@ -115,7 +133,7 @@
           <div class="title-desc anim-3">
            
 
-            <video style="width:120%; height: 450px;" controls>
+            <video style="width:100%;" controls>
     <source src="{{asset('vid/vid_ad1.mp4')}}" type="video/mp4">
 </video>
 
@@ -128,11 +146,11 @@
 
         </div>
 
-        <!-- Arrows scroll down/up -->
+       <!-- Arrows scroll down/up -->
         <footer class="section-footer scrolldown">
           <a class="down">
             <span class="icon"></span>
-            <span class="txt">Our Core Values</span>
+          
           </a>
         </footer>
       </div>
@@ -165,7 +183,7 @@
               <!-- a media object -->
               <div class="media">
                 <div class="img d-flex mr-3">
-                  <i class="icon ion-ios-cog-outline"></i>
+                  <i class="icon ion-lock-combination"></i>
                 </div>
                 <div class="media-body">
                   <h4>Security</h4>
@@ -224,7 +242,7 @@
         <footer class="section-footer scrolldown">
           <a class="down">
             <span class="icon"></span>
-            <span class="txt">Projects</span>
+          
           </a>
         </footer>
       </div>
@@ -248,7 +266,7 @@
         <div class="section-title text-center ">
           <h5 class="title-bg">Offers</h5>
           <div class="title-abs">
-            <h2 class="display-4 display-title">Investment Offers</h2>
+            <h2 class="display-4 display-title">Offer</h2>
             <!--<p></p>-->
           </div>
         </div>
@@ -263,7 +281,7 @@
                 <div class="img-frame-normal">
                   <div class="img-1 shadow">
                     <a href="index-2.html">
-                      <img class="img" src="{{asset('demopage/default.jpg')}}" alt="Image">
+                      <img class="img" src="{{asset('img/2.jpeg')}}" alt="Image">
                     </a>
                   </div>
                   <div class="legend text-left pos-abs">
@@ -279,6 +297,15 @@
           
         </div>
         <!-- end of item -->
+
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
       </div>
       <!-- End of section wrapper -->
     </div>
@@ -314,7 +341,14 @@
               <form id="demo-form" data-parsley-validate="" class="form-container form-container-transparent form-container-white">
                 <div class="form-desc">
                   <h3 class="display-4 display-title  anim-2">Investment Calculator</h3>
-                  <p class="invite  anim-3">Simulate your potential profit</p>
+                  <p class="invite  anim-3"><b>Simulate your potential profit</b></p>
+                  <p> <small>
+                    @if(isset($Config))
+                 
+                  ROI Value :<span id="roi_value">{{$Config->roi_value}}</span> % | ROI Period : <span id="roi_period">{{$Config->roi_period}}</span> Days
+
+                  @endif
+                </small></p>
                 </div>
                 <br>
 
@@ -394,6 +428,15 @@
             </div>
           </div>
         </div>
+
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
       </div>
       <!-- End of section wrapper -->
     </div>
@@ -478,6 +521,15 @@
 
         </div>
         <!-- end of item -->
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
+
       </div>
       <!-- End of section wrapper -->
     </div>
@@ -646,15 +698,7 @@
                       
 
 
-                      <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                    {!! Recaptcha::render() !!}
-
-                    @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                @endif
-                  </div>
+                 
 
                       
 
@@ -688,6 +732,14 @@
             </div>
           </div>
         </div>
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
       </div>
       <!-- End of section wrapper -->
     </div>
@@ -745,7 +797,9 @@
 ?>
    
 
-          <iframe style="width:100%; height: 140px;" src="{{$implodedLink}}" frameborder="0" allowfullscreen></iframe>
+   
+
+          <iframe style="width:100%;" src="{{$implodedLink}}" frameborder="0" allowfullscreen></iframe>
 
            
 
@@ -793,6 +847,15 @@
 
         </div>
         <!-- end of item -->
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
+
       </div>
       <!-- End of section wrapper -->
     </div>
@@ -834,37 +897,17 @@
               <div class="section-content anim text-left">
                 <!-- title and description -->
                 <div class="title-desc">
-                  <div class="anim-2">
+                  <div>
                     <h5>Customer Service</h5>
-                    <h2 class="display-4 display-title">Contact</h2>
-                    <p>For questions about our company and products found on our stores.
-                      Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis
-                      dui. Fusce in urna sem.</p>
-                  </div>
-                  <div class="address-container anim-3">
-
-                    <div class="row">
-                      <div class="col-12 col-md-12 col-lg-6">
-                        <h4>Contact</h4>
-                        <p>Call: 01 234 567 89</p>
-                        <p>Email: ouremail@domain.com</p>
-                      </div>
-                      <div class="col-12 col-md-12 col-lg-6">
-                        <h4>Address</h4>
-                        <p>
-                          Company address
-                          <br>12 Street Turning Place
-                          <br>South Est, Antartica
-                        </p>
-                      </div>
-                    </div>
+                    <h2 class="display-4 display-title">Email Us</h2>
+                    <p>info@globalcoast.net</p>
                   </div>
                 </div>
 
                 <!-- Action button -->
                 <div class="btns-action anim-4">
                   <a class="btn btn-outline-white btn-round" href="#contact/message">
-                    <span class="txt">Send Message</span>
+                    <span class="txt">Information</span>
                   </a>
                 </div>
               </div>
@@ -872,42 +915,6 @@
 
             <div class="col-12 col-md-6">
 
-            </div>
-          </div>
-        </div>
-        <!-- End of slide section wrapper -->
-      </div>
-      <!-- end of information slide -->
-
-      <!-- begin of message slide -->
-      <div class="slide" id="message" data-anchor="message">
-        <!-- Begin of slide section wrapper -->
-        <div class="section-wrapper">
-          <div class="row justify-content-between">
-            <div class="col-12 col-md-6 center-vh">
-              <!-- content -->
-              <div class="section-content anim text-left">
-                <!-- title and description -->
-                <div class="title-desc">
-                  <div>
-                    <h5>Customer Service</h5>
-                    <h2 class="display-4 display-title">Email Us</h2>
-                    <p>For questions about our company and products found on our stores.
-                      Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis
-                      dui. Fusce in urna sem.</p>
-                  </div>
-                </div>
-
-                <!-- Action button -->
-                <div class="btns-action">
-                  <a class="btn btn-outline-white btn-round" href="#contact/information">
-                    <span class="txt">Information</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-5">
               <!-- content -->
               <div class="section-content anim text-left">
                 <!-- title and description -->
@@ -974,13 +981,66 @@
                   </div>
                 </div>
               </div>
+
             </div>
+          </div>
+
+
+        </div>
+        <!-- End of slide section wrapper -->
+      </div>
+      <!-- end of information slide -->
+
+      <!-- begin of message slide -->
+      <div class="slide" id="message" data-anchor="message">
+        <!-- Begin of slide section wrapper -->
+        <div class="section-wrapper">
+          <div class="row justify-content-between">
+            <div class="col-12 col-md-6 center-vh">
+              <!-- content -->
+              <div class="section-content anim text-left">
+
+
+                <!-- title and description -->
+
+                <div class="title-desc">
+                  <div class="anim-2">
+                    <h5>Customer Service</h5>
+                    <h2 class="display-4 display-title">Contact</h2>
+                    <p>
+                     11020 N State Highway 49, Martell,<br> CA 95654,<br> United States
+                    </p>
+                  </div>
+                  <div class="address-container anim-3">
+
+                   
+                  </div>
+                </div>
+                <!-- Action button -->
+                <div class="btns-action">
+                  <a class="btn btn-outline-white btn-round" href="#contact/information">
+                    <span class="txt">Send Message</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5">
+              
+            </div>
+
           </div>
         </div>
         <!-- End of slide section wrapper -->
       </div>
       <!-- end of message slide -->
-
+<!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+          
+          </a>
+        </footer>
     </div>
     <!-- End of contact section -->
 
@@ -1002,25 +1062,33 @@
 
         <!-- text or illustration order are manipulated via Bootstrap order-md-1, order-md-2 class -->
         <!-- begin of item -->
-        <div class="item row  fade-1">
-          <span><img src="{{asset('img/btc.png')}}" width=" 100px" style="float: left;"></span>
-          &nbsp; &nbsp; &nbsp;
-           <span><img src="{{asset('img/etc.png')}}" width=" 150px" style="float: left;"></span>
-            &nbsp; &nbsp; &nbsp;
-            <span><img src="{{asset('img/lit.png')}}" width=" 120px" style="float: left;"></span>
-             &nbsp; &nbsp; &nbsp;
 
-            <span><img src="{{asset('img/100s.png')}}" width=" 100px" style="float: left;"></span>
-             &nbsp; &nbsp; &nbsp;
-           <span><img src="{{asset('img/mac.png')}}" width=" 100px" style="float: left;"></span>
+        <div class="container">
+          
+        
+
+        <div class="item row  fade-1">
+          <span>
+            <img src="{{asset('img/bc.png')}}" width="50px" style="float: left;">
+          </span>
+          &nbsp; &nbsp; &nbsp;
+           <span><img src="{{asset('img/ec.png')}}" width="50px" style="float: left;"></span>
             &nbsp; &nbsp; &nbsp;
-            <span><img src="{{asset('img/ssl.png')}}" width=" 100px" style="float: left;"></span>
+            <span><img src="{{asset('img/lc.png')}}" width=" 50px" style="float: left;"></span>
+            &nbsp; &nbsp; &nbsp;
+            <span><img src="{{asset('img/ssl.png')}}" width="65px" style="float: left; margin-top: -10px;"></span>
              &nbsp; &nbsp; &nbsp;
+           <span><img src="{{asset('img/mac1.png')}}" width="50px" style="float: left;"></span>
+            &nbsp; &nbsp; &nbsp;
+            
 
             <!--<span><img src="{{asset('img/sl.png')}}" width=" 100px" style="float: left;"></span>-->
 
           
         </div>
+
+        <hr>
+
         <!-- end of item -->
 
         <!-- begin of item -->
@@ -1036,17 +1104,24 @@
            <div class="title">
           <h6>RISK DISCLOSURE</h6>
           <p style="font-size: 10px;">Area of high profit investments always implies having certain risks involved. In most cases laser based product buyers are not responsible for actions of their sellers. It is important to understand that purchasing any digital funds equivalent at Laser Online Platform involves reasonable risks. Your deposit refund is not guaranteed and in some rare cases may even be not returned or lost. Cryptocurrency Trading partially implemented at L.O.P’s Crypto-Capital instrument involves financial risk and may not be appropriate for all investors. The information presented here is for information and educational purposes only and should not be considered an offer or solicitation to buy or sell any financial instrument on Laser Online Platform or elsewhere. Any digital funds purchasing decisions that you make are solely your responsibility. Laser Online Platform instruments include Funds Management Area (Secure Area), Internal Transactions, Bitcoin exchange futures, and economic events. Laser Online Platform R.O.I can be volatile and investors risk losing their investment on any given transaction. However, Laser Online has developed a unique multi-level insuring system where 12% of all deposited funds are transferred to Globalcoast Investment LLC fully operated and controlled Bitcoin Security Fund. This amount is deducted automatically from our profits and does not affect profits of our investors. The only type of risk that should be taken into account is force major that is not linked with bitcoin’ currency rate, namely natural disasters (flood, fire, hurricane etc.). Users involved in harmful activity against Laser Online Platform can get their accounts blocked with no prior notification. Invested money is to be returned to their owners with exception of charges for compensation of damage caused to L.O.P. </p>
+
+           <p>
+            <small>
+            &copy; 2017, Globalcoast LLC. All Rights Reserved. <a href="{{URL::to('register')}}" style="color: white;">Home</a> | <a href="{{URL::to('about')}}" style="color: white;">About</a> | <a href="{{URL::to('faqs')}}" style="color: white;">FAQs</a> | <a href="{{URL::to('register#contact')}}" style="color: white;">Contact </a>| <a href="{{URL::to('register#registers')}}" style="color: white;">Sign up</a> |<a href="{{URL::to('login')}}" style="color: white;"> Login</a>
+        <a href="http://highhay.com/">
+          <span class="marked"></span>
+        </a>
+      </small>
+      </p>
         </div>
         </div>
+       
         <!-- end of item -->
 
+        </div>
+
         <!-- Arrows scroll down/up -->
-        <footer class="section-footer scrolldown">
-          <a class="down">
-            <span class="icon"></span>
-            <span class="txt">Projects</span>
-          </a>
-        </footer>
+       
       </div>
       <!-- End of section wrapper -->
     </div>

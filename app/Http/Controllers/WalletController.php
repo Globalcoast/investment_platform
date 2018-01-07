@@ -23,7 +23,6 @@ class WalletController extends Controller
     	//$receiving_wallet_address=Adminwallets::where('id',)
 
 
-
     	return view('wallet.index',['Capitals'=>$Capitals]);
     }
 }

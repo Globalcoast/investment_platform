@@ -42,7 +42,7 @@ class RequestController extends Controller
 
     public function readProfitRequests(){
 
-    	$Capitals=Capital::orderBy('updated_at', 'desc')->paginate(20);
+    	$Capitals=Capital::where([['prn','>',0],['has_ended',0]])->orderBy('prn', 'desc')->paginate(20);
 
     	return view('admin.request.profit',['Capitals'=>$Capitals]);
     }

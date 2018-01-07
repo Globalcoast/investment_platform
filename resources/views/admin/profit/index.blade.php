@@ -21,16 +21,45 @@
                                     <p class="ribbon-content">
 
                                         <span>
-                                            <label>Investor:&nbsp;</label>{{$Capital->user->name}}&nbsp;|&nbsp;
+                                            <label>Investor:&nbsp;</label>{{$Capital->user->name}}
                                         </span>
-
+                                        &nbsp;|
                                         <span>
-                                            <label>Capital:&nbsp;</label>$ {{number_format($Capital->amount)}}
+                                            <label>Currency:&nbsp;</label>{{$Capital->user->currency_type}}
+
+                                            &nbsp;|
+
+                                           @if(isset($Capital->receivingwallet->address))
+                                                    Investor's Address: 
+                                                    <label class="label label-info label-sm">
+
+                                                         {{$Capital->receivingwallet->address}}
+                                                        
+                                                    </label>
+                                                   
+                                                    @else
+                                                    Investor's Address:
+                                                    <label class="label label-info label-sm">
+                                                        
+                                                    ---
+                                                </label>
+
+                                                    @endif
                                         </span>
                                     </p>
 
                                     <p class="ribbon-content">
+
+                                        <span>
+                                            <label>Capital:&nbsp;</label>$ {{number_format($Capital->amount)}}
+                                        </span>
+
+                                        &nbsp;|&nbsp;
+
+                                        <span>
                                         <label>Accumulated Profits:&nbsp;</label>$ {{number_format($Capital->profit->sum('amount'))}}&nbsp;
+                                    </span>
+
                                     </p>
 
                                     <p>

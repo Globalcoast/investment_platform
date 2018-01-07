@@ -50,6 +50,21 @@
                         </div>
 
 
+                         <div class="form-group{{ $errors->has('testimony_bonus_value') ? ' has-error' : '' }}">
+                            <label for="roi_value" class="col-md-4 control-label">Testimonial Bonus Value ($)</label>
+
+                            <div class="col-md-12">
+                                <input id="testimony_bonus_value" type="number" class="form-control" name="testimony_bonus_value" value="{{$Config->testimony_bonus_amount}}" required>
+
+                                @if ($errors->has('testimony_bonus_value'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('testimony_bonus_value') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('investors') ? ' has-error' : '' }}">
                             <label for="roi_value" class="col-md-4 control-label">Increase no of investors by:</label>
 

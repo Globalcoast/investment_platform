@@ -82,6 +82,9 @@ class HomeController extends Controller
 
         $Profits=Profit::where('has_paid',1)->orderBy('id', 'desc')->limit(10)->get();
 
+        $Capitals=Capital::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate('10');
+
+
         $OverallInvestment=0;
         foreach($TotalInvestments as $EachInvestment){
 
@@ -117,6 +120,6 @@ class HomeController extends Controller
 
 
 
-        return view('dashboard.index', ['TotalInvestors'=>$TotalInvestors, 'TotalInvestments'=>$OverallInvestment,'TotalPaidOut'=>$OverallPaidOut,"Profits"=>$Profits,'Config'=>$Config,'TotalInvestorsToDisplay'=>$TotalInvestorsToDisplay,'TotalInvestmentToDisplay'=>$TotalInvestmentToDisplay]);
+        return view('dashboard.index', ['TotalInvestors'=>$TotalInvestors, 'TotalInvestments'=>$OverallInvestment,'TotalPaidOut'=>$OverallPaidOut,"Profits"=>$Profits,'Config'=>$Config,'TotalInvestorsToDisplay'=>$TotalInvestorsToDisplay,'TotalInvestmentToDisplay'=>$TotalInvestmentToDisplay,'Capitals'=>$Capitals]);
     }
 }

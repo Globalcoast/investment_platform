@@ -105,6 +105,10 @@ Route::group(['middleware'=>['auth','is_setting_completed','is_account_completed
 
 	Route::get('/downline','DownlineController@read');
 
+	Route::get('/referral_bonus','DownlineController@readReferralBonus');
+
+	Route::get('/testimony_bonus','DownlineController@readTestimonyBonus');
+
 	Route::get('/reinvest/{capital_id}','InvestController@reinvest');
 
 	Route::get('/request/capital/{capital_id}','RequestController@requestCapital');
@@ -118,6 +122,10 @@ Route::group(['middleware'=>['auth','is_setting_completed','is_account_completed
 	Route::get('/request/bonus/{bonus_id}','RequestController@requestBonus');
 
 	Route::get('/invest/bonus/{bonus_id}','InvestController@investBonus');
+
+	Route::get('/request/testimony/bonus/{bonus_id}','RequestController@requestTestimonyBonus');
+
+	Route::get('/invest/testimony/bonus/{bonus_id}','InvestController@investTestimonyBonus');
 
 	Route::get('/password/change', 'SettingController@showChangePasswordForm');
 
@@ -218,7 +226,7 @@ Route::group(['middleware'=>['auth:admin']], function(){
 
 	Route::get('/admin/testimony','Admin\TestimonyController@read');
 
-	Route::get('/admin/testimony/approve','Admin\TestimonyController@approve');
+	Route::get('/admin/testimony/approve/{id}','Admin\TestimonyController@approve');
 
 	Route::get('/admin/testimony/approvebonus','Admin\TestimonyController@approvebonus');
 

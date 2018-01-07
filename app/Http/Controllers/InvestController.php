@@ -31,33 +31,6 @@ class InvestController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
      public function create(Request $request){
 
     	$formData=$request->all();
@@ -211,22 +184,7 @@ class InvestController extends Controller
 
                 //populate referral model
 
-                $referee_investment_count=Capital::where('user_id', Auth::user()->id)->get()->count();
 
-                if($referee_investment_count ==1){
-                //allocated bonus
-                $bonus=(5/100)*$request->amount;
-
-                $referral=Downline::where('referee_id',Auth::user()->id)->first();
-
-                if(isset($referral->referral_id)){
-
-                Downline::where([['referral_id', $referral->referral_id], ['referee_id', Auth::user()->id]])->update(['amount'=>$bonus]);
-
-                }
-
-
-            }
 
 
 
@@ -241,7 +199,7 @@ class InvestController extends Controller
                 $receiving_wallet_id=Adminwallets::where('currency','ltc')->orderByRaw('RAND()')->take(2)->first()->id;
             }
 
-            $receiving_wallet_address=Adminwallets::where('id',$receiving_wallet_id)->orderByRaw('RAND()')->take(2)->first()->id;
+            $receiving_wallet_address=Adminwallets::where('id',$receiving_wallet_id)->orderByRaw('RAND()')->take(2)->first()->address;
 
             ///////////////////////////////
             $index=0; $callback=null;
@@ -304,25 +262,6 @@ class InvestController extends Controller
 
         	$transaction->save();
 
-        	//allocate one-time referral bonus ro referral
-
-        	$referee_investment_count=Capital::where('user_id', Auth::user()->id)->get()->count();
-
-        	if($referee_investment_count ==1){
-        		//allocated bonus
-        		$bonus=(5/100)*$request->amount;
-
-        		$referral=Downline::where('referee_id',Auth::user()->id)->first();
-
-                if(isset($referral->referral_id)){
-
-        		Downline::where([['referral_id', $referral->referral_id], ['referee_id', Auth::user()->id]])->update(['amount'=>$bonus]);
-
-                }
-
-
-        	}
-
 
 
         }
@@ -330,40 +269,10 @@ class InvestController extends Controller
 
 
 
-
-
-
-
-
-
-    	return Redirect::to('/transaction')->with('notification',"You've invested $ ".number_format($request->amount)." Make payment to : ".$receiving_wallet_address);
+    	return Redirect::to('/transaction')->with('notification',"You've invested $ ".number_format($request->amount).". Make payment to the following address : ".$receiving_wallet_address);
 
     	}
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

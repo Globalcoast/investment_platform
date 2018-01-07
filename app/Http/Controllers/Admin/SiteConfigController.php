@@ -38,7 +38,8 @@ class SiteConfigController extends Controller
             
             'cron_status'=>"required|integer",
             'investors'=>"required|integer",
-            'investment'=>'required|integer'
+            'investment'=>'required|integer',
+            'testimony_bonus_value'=>'required|integer'
             );
 
         $message=array(
@@ -53,7 +54,7 @@ class SiteConfigController extends Controller
 
         }else{
 
-        	Config::where('id', 1)->update(['roi_period'=>$request->roi_period,'roi_value'=>$request->roi_value,'cron_status'=>$request->cron_status,'increase_investors_by'=>$request->investors,'increase_investment_by'=>$request->investment]);
+        	Config::where('id', 1)->update(['roi_period'=>$request->roi_period,'roi_value'=>$request->roi_value,'cron_status'=>$request->cron_status,'increase_investors_by'=>$request->investors,'increase_investment_by'=>$request->investment, 'testimony_bonus_amount'=>$request->testimony_bonus_value]);
 
 
     	return Redirect::back()->with('notification','Site Configurations updated');

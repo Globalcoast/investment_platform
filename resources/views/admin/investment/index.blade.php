@@ -23,7 +23,10 @@
                                             <tr>
                                                 <th>S/N</th>
                                                 <th>Investor</th>
-                                                <th>Amount ($)</th>
+                                                <th>Capital ($)</th>
+                                                <th>Amount Received($)</th>
+
+                                                <th>Currency | Receiving ADDS</th>
                                                
                                                 <th>Status</th>
                                                 <th class="text-nowrap">Action</th>
@@ -44,6 +47,26 @@
                                                 <td>{{$count}}</td>
                                                 <td>{{$Capital->user->name}}</td>
                                                 <td>{{number_format($Capital->amount)}}</td>
+                                                <td>{{number_format($Capital->receiving->amount_received)}}</td>
+                                                <td>
+                                                    {{$Capital->user->currency_type}}
+                                                    <br>
+
+                                                    @if(isset($Capital->receivingwallet->address))
+
+                                                    <label class="label label-info label-sm">
+
+                                                         {{$Capital->receivingwallet->address}}
+                                                        
+                                                    </label>
+                                                   
+                                                    @else
+                                                    <label class="label label-info label-sm">
+                                                    ---
+                                                </label>
+
+                                                    @endif
+                                                </td>
                                              
                                                 <td>
 

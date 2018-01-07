@@ -283,25 +283,47 @@ function toggleDataSeries(e) {
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                        
-                        <li class="active">
+                        <li>
                             <a class="has-arrow"  href="{{URL::to('home')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                            
                         </li>
-                        <li>
 
-                            <?php
+
+
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                             Account <span class="caret"></span>
+                             </a>
+                                <ul class="dropdown-menu">
+
+                                    <li >
+                                        <a class="has-arrow " href="{{URL::to('setting')}}" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Profile</span></a>
+                           
+                                    </li>
+
+                                    <li >
+                                        <?php
 
                                 if(Auth::user()->wallet_address==null){
                                 $accounturl="account";
 
                             }else{
                             $accounturl="accounts";
-                        }
+                                }
                             ?>
 
-                            <a class="has-arrow " href="{{URL::to($accounturl)}}" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Account</span></a>
-                            
-                        </li>
+                            <a class="has-arrow " href="{{URL::to($accounturl)}}" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Wallet</span>
+                            </a>
+                           
+                                    </li>
+
+                                    
+
+                                </ul>
+                         </li>
+
+
+
                         <li class="three-column">
                             <a class="has-arrow" href="{{URL::to('invest')}}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Invest</span></a>
                             
@@ -321,12 +343,45 @@ function toggleDataSeries(e) {
                             <a class="has-arrow " href="{{URL::to('downline')}}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Downlines</span></a>
                            
                         </li>
+
+
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                             Bonuses <span class="caret"></span>
+                             </a>
+                                <ul class="dropdown-menu">
+
+                                    <li >
+                                        <a class="has-arrow " href="{{URL::to('referral_bonus')}}" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Referral bonus</span></a>
+                           
+                                    </li>
+
+                                    <li >
+                                        <?php
+
+                                if(Auth::user()->wallet_address==null){
+                                $accounturl="account";
+
+                            }else{
+                            $accounturl="accounts";
+                                }
+                            ?>
+
+                            <a class="has-arrow " href="{{URL::to('testimony_bonus')}}" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Testimonial bonus</span>
+                            </a>
+                           
+                                    </li>
+
+                                    
+
+                                </ul>
+                         </li>
+
+
+
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap"></li>
-                        <li class="two-column">
-                            <a class="has-arrow " href="{{URL::to('setting')}}" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Settings</span></a>
-                           
-                        </li>
+                        
                         <li>
                             <a class="has-arrow " href="{{URL::to('news')}}" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">News</span></a>
                            

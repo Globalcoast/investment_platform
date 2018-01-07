@@ -23,11 +23,10 @@
                                         <thead>
                                             <tr>
                                                 <th>S/N</th>
-                                                <th>Date</th>
                                                 <th>Name</th>
-                                                <th>Bonus ($)</th>
-                                                <th>Status</th>
-                                                <th class="text-nowrap">Action</th>
+                                                <th>Country</th>
+                                                <th>Currency</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -40,49 +39,12 @@
 
                                             <tr>
                                                 <td>{{$count}}</td>
-                                                <td>{{date('d-m-Y h:i', strtotime($Downline->created_at))}}</td>
                                                 <td>{{$Downline->referee->name}}</td>
-                                                <td>
-
-                                                    @if($Downline->amount==0)
-                                                    {{'Pending'}}
-                                                    @else
-                                                    {{number_format($Downline->amount)}}
-                                                    @endif
-
-                                            </td>
-                                                <td>
-                                                   <!-- <a href="" class="btn btn-sm btn-danger">Pending</a>-->
-
-                                                   @if($Downline->has_invested == 1)
-                                                   <label class="btn btn-sm btn-success">Invested</label>
-
-                                                   @else
-
-                                                    @if($Downline->has_requested <=0 && $Downline->has_paid <=0 )
-                                                    <a href="" class="btn btn-sm btn-primary">Matured</a>
-                                                    @endif
-
-                                                    @if($Downline->has_requested == 1)
-                                                    <a href="" class="btn btn-sm btn-info">Requested</a>
-                                                    @endif
-
-                                                    @if($Downline->has_paid ==1)
-                                                    <a href="" class="btn btn-sm btn-success">Paid</a>
-                                                    @endif
-
-                                                    @endif
-                                                </td>
-
-                                                <td>
-                                                   @if($Downline->request==0)
-                                                    <a href="{{URL::to('/request/bonus/'.$Downline->id)}}" class="btn btn-sm btn-primary">Cash-out</a>
-                                                    @endif
-
-                                                    @if($Downline->request==0 && $Downline->has_invested ==0)
-                                                    <a href="{{URL::to('/invest/bonus/'.$Downline->id)}}" class="btn btn-sm btn-success">Re-invest</a>
-                                                    @endif
-                                                </td>
+                                                <td><span style="text-transform: capitalize;">{{$Downline->referee->country}}</span></td>
+                                                <td>{{$Downline->referee->currency_type}}</td>
+                                                <td>{{date('d-m-Y h:i', strtotime($Downline->created_at))}}</td>
+                                                
+                                                
                                                 
                                                 
                                             </tr>

@@ -206,10 +206,6 @@ embedder.parentNode.appendChild(s);
 
 
 
-                                        <?php
-                                            $Capitals=Auth::user()->capital;
-                                        ?>
-
                                        
 
                                         @foreach($Capitals as $Capital)
@@ -326,7 +322,13 @@ embedder.parentNode.appendChild(s);
                         </div>
 
 
-<!--LEFT SIDE-->        
+<!--LEFT SIDE-->   
+
+
+
+
+
+
 
  <!-- Column -->
 

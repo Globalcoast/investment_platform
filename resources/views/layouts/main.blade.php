@@ -64,6 +64,10 @@
   <link href="{{asset('css/parsley.css')}}" id="theme" rel="stylesheet">
 
   <script src="{{asset('js/vendor/modernizr-2.7.1.min.js')}}"></script>
+
+  <link rel="stylesheet" href="https://cdn.plyr.io/2.0.18/plyr.css">
+
+
 </head>
 
 <body id="menu" class="body-page" style="">
@@ -119,18 +123,18 @@
 
 
            
-             <a class="btn btn-outline-white btn-round btn-sm"  href="{{ route('register')}}#registers">
-              Register
-            </a>
-            <a class="btn btn-outline-white btn-round btn-sm" href="{{ route('login')}}">
+             
+            <a class="btn btn-outline-white btn-round" href="{{ route('login')}}">
               Login
             </a>
 
             &nbsp; &nbsp;
 
-             <span style="font-size: 100%;">Current investors : 
+             <span class="hidden-sm hidden-xs" style="font-size: 100%;">Current investors : 
              <label id="count-test-2" class="demo" style="color: green;"></label>
              </span> 
+
+
 
             @else
             {{null}}
@@ -141,7 +145,9 @@
 
          &nbsp; &nbsp;
 
-        <span id="google_translate_element" style="float: right;"></span><script type="text/javascript">
+        <span class="hidden-sm hidden-xs" id="google_translate_element" style="float: right;"></span>
+
+        <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,az,cs,de,el,en,es,fi,fr,hi,id,it,iw,ja,ka,kn,ko,la,ml,ms,nl,pt,ru,sl,so,sv,tr,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
@@ -154,12 +160,15 @@ function googleTranslateElementInit() {
       <nav class="navbar-mainmenu">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{URL::to('/register')}}">Home
+            <a class="nav-link" href="{{URL::to('/register')}}">
+              
+              Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{URL::to('/about')}}">About</a>
+            <a class="nav-link" href="{{URL::to('/about')}}">
+          About</a>
           </li>
          
         </ul>
@@ -170,13 +179,13 @@ function googleTranslateElementInit() {
       <nav class="navbar-sidebar ">
         <ul class="navbar-nav" id="qmenu">
           <li class="nav-item" data-menuanchor="home">
-            <a href="#home">
+            <a href="#home" class="hidden-sm hidden-xs">
               <i class="icon ion-ios-home-outline"></i>
               <span class="txt">Home</span>
             </a>
           </li>
           <li class="nav-item" data-menuanchor="about">
-            <a href="#about">
+            <a href="#about" class="hidden-xs hidden-sm">
               <i class="icon ion-ios-information-outline"></i>
               <span class="txt">About</span>
             </a>
@@ -192,21 +201,21 @@ function googleTranslateElementInit() {
 
           <li class="nav-item" data-menuanchor="offers">
             <a href="#offers">
-              <i class="icon ion-ios-telephone-outline"></i>
-              <span class="txt">Investment offers</span>
+              <i class="icon ion-arrow-right-a"></i>
+              <span class="txt">Offer</span>
             </a>
           </li>
 
           <li class="nav-item" data-menuanchor="payroll">
             <a href="#payroll">
-              <i class="icon ion-ios-telephone-outline"></i>
+              <i class="icon ion-cash"></i>
               <span class="txt">Payroll</span>
             </a>
           </li>
 
            <li class="nav-item" data-menuanchor="registers">
             <a href="#registers">
-              <i class="icon ion-ios-albums-outline"></i>
+              <i class="icon ion-log-in"></i>
               <span class="txt">Register</span>
             </a>
           </li>
@@ -219,14 +228,14 @@ function googleTranslateElementInit() {
 
           <li class="nav-item" data-menuanchor="faqs">
             <a href="{{URL::to('faqs')}}">
-              <i class="icon ion-ios-telephone-outline"></i>
+              <i class="icon ion-help-circled"></i>
               <span class="txt">FAQs</span>
             </a>
           </li>
 
            <li class="nav-item" data-menuanchor="testimony">
             <a href="#testimony">
-              <i class="icon ion-ios-telephone-outline"></i>
+              <i class="icon ion-ios-people"></i>
               <span class="txt">Testimonies</span>
             </a>
           </li>
@@ -243,7 +252,7 @@ function googleTranslateElementInit() {
 
            <li class="nav-item" data-menuanchor="security">
             <a href="#security">
-              <i class="icon ion-ios-telephone-outline"></i>
+              <i class="icon ion-lock-combination"></i>
               <span class="txt">Security</span>
             </a>
           </li>
@@ -281,7 +290,7 @@ function googleTranslateElementInit() {
 
 
 
-      <p>Copyright &copy; 2017, Globalcoast LLC. ® All Rights Reserved. <a href="{{URL::to('register')}}" style="color: white;">Home</a> | <a href="{{URL::to('about')}}" style="color: white;">About</a> | <a href="{{URL::to('faqs')}}" style="color: white;">FAQs</a> | <a href="{{URL::to('register#contact')}}" style="color: white;">Contact </a>| <a href="{{URL::to('register#registers')}}" style="color: white;">Sign up</a> |<a href="{{URL::to('login')}}" style="color: white;"> Login</a> | ROI Value :<span id="roi_value">{{$Config->roi_value}}</span> % | ROI Period : <span id="roi_period">{{$Config->roi_period}}</span> Days
+      <p class="hidden-xs hidden-sm">&copy; 2017, Globalcoast LLC. All Rights Reserved. <a href="{{URL::to('register')}}" style="color: white;">Home</a> | <a href="{{URL::to('about')}}" style="color: white;">About</a> | <a href="{{URL::to('faqs')}}" style="color: white;">FAQs</a> | <a href="{{URL::to('register#contact')}}" style="color: white;">Contact </a>| <a href="{{URL::to('register#registers')}}" style="color: white;">Sign up</a> |<a href="{{URL::to('login')}}" style="color: white;"> Login</a>
         <a href="http://highhay.com/">
           <span class="marked"></span>
         </a>
@@ -294,25 +303,21 @@ function googleTranslateElementInit() {
     <div class="footer-right">
       <ul class="social">
         <li>
-          <a href="#">
+          <a href="https://www.facebook.com/globalcoast/">
             <i class="icon fa fa-facebook"></i>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <!--<li>
+          <a href="https://www.twitter.com/globalcoast/">
             <i class="icon fa fa-twitter"></i>
           </a>
         </li>
+      
         <li>
-          <a href="#">
-            <i class="icon fa fa-linkedin"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
+          <a href="https://www.instagram.com/globalcoast/">
             <i class="icon fa fa-instagram"></i>
           </a>
-        </li>
+        </li>-->
       </ul>
     </div>
   </footer>
@@ -323,6 +328,10 @@ function googleTranslateElementInit() {
   <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
 
   <!--count up -->
+
+   <!--<script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
+
+  <script>plyr.setup();</script>-->
 
 
 <script src="{{asset('js/jQuerySimpleCounter.js')}}"></script>
@@ -363,6 +372,8 @@ $('#count-test-2').jQuerySimpleCounter({
   <script src="{{ asset('js/main.js') }}"></script>
 
   <script src="{{asset('js/glob.js')}}"></script>
+
+
 
    {!! NoCaptcha::renderJs() !!}
 

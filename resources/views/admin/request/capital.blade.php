@@ -24,7 +24,7 @@
                                                 <th>S/N</th>
                                                 <th>Investor</th>
                                                 <th>Amount ($)</th>
-                                                <th>Investor's currency</th>
+                                                <th>Currency | Investor's ADDS</th>
                                                 <th>Status</th>
                                                 <th class="text-nowrap">Action</th>
                                             </tr>
@@ -44,7 +44,25 @@
                                                 <td>{{$count}}</td>
                                                 <td>{{$Capital->user->name}}</td>
                                                 <td>{{number_format($Capital->amount)}}</td>
-                                                <td>{{$Capital->user->currency_type}}</td>
+                                                <td>
+                                                    {{$Capital->user->currency_type}}
+                                                    <br>
+
+                                                    @if(isset($Capital->user->wallet_address))
+
+                                                    <label class="label label-info label-sm">
+
+                                                         {{$Capital->user->wallet_address}}
+                                                        
+                                                    </label>
+                                                   
+                                                    @else
+                                                    <label class="label label-info label-sm">
+                                                    ---
+                                                </label>
+
+                                                    @endif
+                                                </td>
                                                 <td>
 
                                                 	@if($Capital->has_reinvested==1)

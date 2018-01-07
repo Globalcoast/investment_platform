@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Downline;
 use App\User;
+use App\Testimony;
 
 class DownlineController extends Controller
 {
@@ -20,5 +21,21 @@ class DownlineController extends Controller
     	$Downlines=Downline::where('referral_id', Auth::user()->id)->orderBy('id', 'desc')->paginate('10');
 
     	return view('downline.index', ['Downlines'=>$Downlines]);
+    }
+
+
+    public function readReferralBonus(){
+
+    	$Downlines=Downline::where('referral_id', Auth::user()->id)->orderBy('id', 'desc')->paginate('10');
+
+    	return view('downline.bonus.referral', ['Downlines'=>$Downlines]);
+    }
+
+
+    public function readTestimonyBonus(){
+
+    	$Testimonies=Testimony::where('id', Auth::user()->id)->orderBy('id', 'desc')->paginate('10');
+
+    	return view('downline.bonus.testimony', ['Testimonies'=>$Testimonies]);
     }
 }

@@ -24,7 +24,7 @@
                                                 <th>S/N</th>
                                                 <th>Investor</th>
                                                 <th>Amount ($)</th>
-                                                <th>Investor's Currency</th>
+                                                <th>Currency | ADDS</th>
                                                 <th>Status</th>
                                                 <th class="text-nowrap">Action</th>
                                             </tr>
@@ -44,7 +44,13 @@
                                                 <td>{{$count}}</td>
                                                 <td>{{$Bonus->referral->name}}</td>
                                                 <td>{{number_format($Bonus->amount)}}</td>
-                                                <td>{{$Bonus->referral->currency_type}}</td>
+
+
+                                                <td>
+                                                    {{$Bonus->referral->currency_type}}
+                                                    &nbsp;|&nbsp;
+                                                    {{$Bonus->referral->wallet_address}}
+                                                </td>
                                                 <td>
 
                                                     @if($Bonus->has_invested==1)
